@@ -1,6 +1,10 @@
 import express from 'express'; // Use 'import' for ESM
-import db from './db/db';
 const app = express();
+import authRoute from './routes/auth'
+
+
+
+app.use('./api',authRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello, Express!');
