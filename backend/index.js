@@ -1,10 +1,12 @@
 import express from 'express'; // Use 'import' for ESM
+import authRoute from './routes/auth.js'
+import bodyParser from 'body-parser';
+
 const app = express();
-import authRoute from './routes/auth'
 
-
-
-app.use('./api',authRoute);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api',authRoute);
 
 app.get('/', (req, res) => {
   res.send('Hello, Express!');
