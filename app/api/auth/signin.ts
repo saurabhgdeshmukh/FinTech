@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcryptjs";
-import { FindUserByEmail } from "@/model/User";
-import { generateToken } from "@/utils/jwt";
+import { FindUserByEmail } from "../model/User";
+import { generateToken } from "../utils/jwt";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
