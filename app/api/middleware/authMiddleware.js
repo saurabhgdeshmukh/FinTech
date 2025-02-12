@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import { verifyToken } from "@/utils/jwt";
+import { verifyToken } from "../utils/jwt";
 
 export const authMiddleware = async (req: NextApiRequest, res: NextApiResponse, next: Function) => {
   const token = req.headers.authorization?.split(" ")[1];

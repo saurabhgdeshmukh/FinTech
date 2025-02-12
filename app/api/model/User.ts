@@ -1,4 +1,4 @@
-import db from "@/utils/db";
+import db from "../utils/db";
 
 // Define TypeScript interface for User
 export interface User {
