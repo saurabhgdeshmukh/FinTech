@@ -22,7 +22,7 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const url = isLogin ? "/api/auth/login" : "/api/auth/signup";
+    const url = isLogin ? "/api/auth/signin" : "/api/auth/signup";
     const body = isLogin
       ? { Email: formData.Email, Password: formData.Password }
       : formData;

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
-import { FindUserByEmail } from "../../model/User";
-import { generateToken } from "../../utils/jwt";
+import { FindUserByEmail } from "@/app/model/User";
+import { generateToken } from "../../../utils/jwt";
 
 export async function POST(req: Request) {
   try {
@@ -13,12 +13,13 @@ export async function POST(req: Request) {
     }
 
     let user = await FindUserByEmail(Email);
-    if (!user || user.length === 0) {
+    console.log(user.data)
+    if (!user || !user.data) {
       return NextResponse.json({ error: "User not found." }, { status: 400 });
     }
-
-    user = user[0]; // Extract user if it's an array
-
+    console.log(user)
+    user = user.data; // Extract user if it's an array
+    console.log(user)
     const isMatch = await bcrypt.compare(Password, user.Password);
     if (!isMatch) {
       return NextResponse.json({ error: "Invalid credentials." }, { status: 400 });
