@@ -12,6 +12,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Please provide email and password." }, { status: 400 });
     }
 
+    
     let user = await FindUserByEmail(Email);
     console.log(user.data)
     if (!user || !user.data) {
