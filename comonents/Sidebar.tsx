@@ -25,20 +25,20 @@ const Sidebar: React.FC = () => {
     <div className="p-3 w-78  bg-white shadow-lg">
       {/* Search Bar */}
       <div >
-        <div className="p-3 flex items-center border border-gray-800 rounded-xl shadow-sm bg-white">
+        <div className="px-3 py-3 pr-3 flex items-center border border-gray-800 rounded-md shadow-sm bg-white">
           <Search className="h-5 w-5 text-gray-500" />
           <input
             type="text"
             placeholder="Search..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="w-full p-2 outline-none text-gray-700 bg-transparent"
+            className=" p-2 rounded-md text-gray-700 bg-transparent"
           />
         </div>
       </div>
 
       {/* Navigation Links */}
-      <div className="space-y-4">
+      <div className="space-y-3">
         {menuItems.map((item) => (
           <div
             key={item.name}
