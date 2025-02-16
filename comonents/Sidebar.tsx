@@ -11,54 +11,63 @@ import { Search } from "lucide-react";
 
 const Sidebar: React.FC = () => {
   const [query, setQuery] = useState("");
+  const [activeItem, setActiveItem] = useState("My Banks"); // Active item state
+
+  const menuItems = [
+    { name: "Home", icon: HomeIcon },
+    { name: "My Banks", icon: mybanksIcon },
+    { name: "Transaction History", icon: transaction },
+    { name: "Payment Transfer", icon: payment },
+    { name: "Connect Bank", icon: connectBank },
+  ];
+
   return (
-    <div className="w-64 h-screen bg-white shadow-lg p-5  flex-row justify-between">
-      <div className="mt-5 space-y-4">
-        <div className="relative flex items-center">
-          <div className="flex items-center border border-gray-400 rounded-lg overflow-hidden w-80 shadow-md">
-            <input
-              type="text"
-              placeholder="Search..."
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="w-full p-2 outline-none text-gray-700"
-            />
-            <button className="p-2 bg-gray-200 hover:bg-gray-300 transition">
-              <Search className="h-5 w-5 text-gray-600" />
-            </button>
-          </div>
-        </div>
-        <div className="flex items-center space-x-3 text-blue-500 font-medium cursor-pointer">
-          <Image src={HomeIcon} alt="Home" width={24} height={24} />
-          <span>Home</span>
-        </div>
-        <div className="flex items-center space-x-3 cursor-pointer">
-          <Image src={mybanksIcon} alt="My Banks" width={24} height={24} />
-          <span>My Banks</span>
-        </div>
-        <div className="flex items-center space-x-3 cursor-pointer">
-          <Image src={transaction} alt="Transaction History" width={24} height={24} />
-          <span>Transaction History</span>
-        </div>
-        <div className="flex items-center space-x-3 cursor-pointer">
-          <Image src={payment} alt="Payment Transfer" width={24} height={24} />
-          <span>Payment Transfer</span>
-        </div>
-        <div className="flex items-center space-x-3 cursor-pointer">
-          <Image src={connectBank} alt="Connect Bank" width={24} height={24} />
-          <span>Connect Bank</span>
+    <div className="p-3 w-78  bg-white shadow-lg">
+      {/* Search Bar */}
+      <div >
+        <div className="p-3 flex items-center border border-gray-800 rounded-xl shadow-sm bg-white">
+          <Search className="h-5 w-5 text-gray-500" />
+          <input
+            type="text"
+            placeholder="Search..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="w-full p-2 outline-none text-gray-700 bg-transparent"
+          />
         </div>
       </div>
-      <div className="mt-auto flex items-center space-x-3">
-        <div className="flex">
-          <div>
-            <p className="text-sm font-semibold">Saurabh</p>
-            <p className="text-xs text-gray-500">Saurabh@gmail.com</p>
+
+      {/* Navigation Links */}
+      <div className="space-y-4">
+        {menuItems.map((item) => (
+          <div
+            key={item.name}
+            className={`flex items-center space-x-3 p-3 rounded-md cursor-pointer transition ${
+              activeItem === item.name
+                ? "bg-blue-500 text-white"
+                : "text-gray-600 hover:bg-gray-100"
+            }`}
+            onClick={() => setActiveItem(item.name)}
+          >
+            <Image src={item.icon} alt={item.name} width={24} height={24} />
+            <span className="text-sm font-medium">{item.name}</span>
           </div>
-          <div>
-            <Image src={logout} alt="Logout" width={24} height={24} />
-          </div>
+        ))}
+      </div>
+
+      {/* User Section - Fixed at the Bottom */}
+      <div className="mt-auto border-t border-gray-200 pt-4 flex items-center space-x-3 px-3">
+        <div>
+          <p className="text-sm font-semibold text-gray-800">Saurabh</p>
+          <p className="text-xs text-gray-500">Saurabh@gmail.com</p>
         </div>
+        <Image
+          src={logout} // Replace with actual user avatar
+          alt="User Avatar"
+          width={32}
+          height={32}
+          className="rounded-full"
+        />
       </div>
     </div>
   );
