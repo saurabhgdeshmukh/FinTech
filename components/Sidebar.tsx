@@ -1,15 +1,16 @@
 "use client";
+import React, { useState } from "react";
 import Image from "next/image";
+import { Search } from "lucide-react";
+
 import HomeIcon from "@/public/icons/home.svg";
 import mybanksIcon from "@/public/icons/dollar.svg";
 import transaction from "@/public/icons/transaction.svg";
 import payment from "@/public/icons/payment-transfer.svg";
 import connectBank from "@/public/icons/connect-bank.svg";
 import logout from "@/public/icons/logout.svg";
-import { useState } from "react";
-import { Search } from "lucide-react";
 
-const Sidebar: React.FC = () => {
+const Sidebar = () => {
   const [query, setQuery] = useState("");
   const [activeItem, setActiveItem] = useState("My Banks"); // Active item state
 
@@ -22,23 +23,23 @@ const Sidebar: React.FC = () => {
   ];
 
   return (
-    <div className="p-3 w-78  bg-white shadow-lg">
+    <div className="p-3 w-78 h-screen bg-white shadow-lg flex flex-col justify-between">
       {/* Search Bar */}
-      <div >
-        <div className="px-3 py-3 pr-3 flex items-center border border-gray-800 rounded-md shadow-sm bg-white">
+      <div>
+        <div className="px-1 flex items-center border border-gray-200 rounded-md shadow-sm bg-white">
           <Search className="h-5 w-5 text-gray-500" />
           <input
             type="text"
             placeholder="Search..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className=" p-2 rounded-md text-gray-700 bg-transparent"
+            className="p-2 w-full rounded-md text-gray-700 bg-transparent outline-none"
           />
         </div>
       </div>
 
       {/* Navigation Links */}
-      <div className="space-y-3">
+      <div className="mt-5 space-y-3 flex-grow">
         {menuItems.map((item) => (
           <div
             key={item.name}
@@ -56,7 +57,7 @@ const Sidebar: React.FC = () => {
       </div>
 
       {/* User Section - Fixed at the Bottom */}
-      <div className="mt-auto border-t border-gray-200 pt-4 flex items-center space-x-3 px-3">
+      <div className="justify-center border-t border-gray-200 pt-4 flex items-center space-x-3 px-3">
         <div>
           <p className="text-sm font-semibold text-gray-800">Saurabh</p>
           <p className="text-xs text-gray-500">Saurabh@gmail.com</p>
@@ -64,9 +65,9 @@ const Sidebar: React.FC = () => {
         <Image
           src={logout} // Replace with actual user avatar
           alt="User Avatar"
-          width={32}
-          height={32}
-          className="rounded-full"
+          width={28}
+          height={28}
+          className="mr-6 rounded-full cursor-pointer"
         />
       </div>
     </div>

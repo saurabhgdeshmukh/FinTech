@@ -4,7 +4,7 @@ import Budget from "@/components/Budget";
 
 const HomePage: React.FC = () => {
   return (
-    <div className="flex bg-gray-200">
+    <div className="flex">
       <Sidebar />
       <div className="flex-1 p-6">
         <Dashboard />
