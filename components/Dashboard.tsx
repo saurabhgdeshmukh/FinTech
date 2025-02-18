@@ -11,7 +11,7 @@ const COLORS = ["#1570EF", "#E5E7EB"]; // Blue and light gray
 
 const Dashboard = () => {
   return (
-    <div className="flex-1 p-6">
+    <div className="flex-1 p-4">
       {/* Welcome Text */}
       <h1 className="text-3xl font-bold text-gray-700">
         Welcome, <span className="text-3xl text-blue-500">Saurabh</span>
@@ -28,7 +28,7 @@ const Dashboard = () => {
             data={data}
             cx="50%"
             cy="50%"
-            innerRadius={40}
+            innerRadius={37}
             outerRadius={50}
             startAngle={90}
             endAngle={-270}
