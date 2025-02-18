@@ -1,10 +1,10 @@
 import Transactions from "./Transactions";
 
-const Dashboard: React.FC = () => {
+const Dashboard = () => {
   return (
     <div className="flex-1 p-6">
       <h1 className="text-3xl font-bold">
-        Welcome, <span className="text-blue-500">Saurabh</span>
+        Welcome, <span className="text-3xl  text-blue-500">Saurabh</span>
       </h1>
       <p className="text-gray-600 mt-1">
         Access & manage your account and transactions efficiently.

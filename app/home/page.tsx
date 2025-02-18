@@ -1,6 +1,6 @@
-import Sidebar from "@/comonents/Sidebar";
-import Dashboard from "@/comonents/Dashboard";
-import Budget from "@/comonents/Budget";
+import Sidebar from "@/components/Sidebar";
+import Dashboard from "@/components/Dashboard";
+import Budget from "@/components/Budget";
 
 const HomePage: React.FC = () => {
   return (
