@@ -11,7 +11,7 @@ const COLORS = ["#1570EF", "#E5E7EB"]; // Blue and light gray
 
 const Dashboard = () => {
   return (
-    <div className="flex-1 p-4">
+    <div className="flex-1 p-4 w-full">
       {/* Welcome Text */}
       <h1 className="text-3xl font-bold text-gray-700">
         Welcome, <span className="text-3xl text-blue-500">Saurabh</span>
