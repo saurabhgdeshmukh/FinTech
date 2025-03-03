@@ -43,7 +43,6 @@ const Budget: React.FC = () => {
           />
         </div>
       </div>
-
       <div className="p-6">
         {/* User Info */}
         <h2 className="text-lg font-semibold text-gray-900 mt-2 relative">
