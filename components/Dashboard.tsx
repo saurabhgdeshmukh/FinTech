@@ -3,11 +3,11 @@ import { PieChart, Pie, Cell } from "recharts";
 import Transactions from "./Transactions";
 
 const data = [
-  { name: "Filled", value: 30 }, // Change this value for different progress
+  { name: "Filled", value: 30 },
   { name: "Remaining", value: 70 },
 ];
 
-const COLORS = ["#1570EF", "#E5E7EB"]; // Blue and light gray
+const COLORS = ["#1570EF", "#E5E7EB"];
 
 const Dashboard = () => {
   return (
@@ -21,27 +21,29 @@ const Dashboard = () => {
       </p>
 
       {/* Bank Account Widget with Donut Chart */}
-      <div className="mt-5 bg-white p-6 rounded-xl border shadow-md flex items-center w-full">
+      <div className="mt-5 bg-white p-6 rounded-xl border shadow-md flex flex-wrap md:flex-nowrap items-center w-full">
         {/* Donut Chart */}
-        <PieChart width={100} height={100}>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            innerRadius={37}
-            outerRadius={50}
-            startAngle={90}
-            endAngle={-270}
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index]} />
-            ))}
-          </Pie>
-        </PieChart>
+        <div className="w-full md:w-auto flex justify-center md:justify-start">
+          <PieChart width={100} height={100}>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              innerRadius={37}
+              outerRadius={50}
+              startAngle={90}
+              endAngle={-270}
+              dataKey="value"
+            >
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={COLORS[index]} />
+              ))}
+            </Pie>
+          </PieChart>
+        </div>
 
         {/* Bank Account Info */}
-        <div className="ml-9 flex justify-between w-full">
+        <div className="ml-0 md:ml-9 mt-4 md:mt-0 flex flex-col md:flex-row justify-between w-full">
           {/* Left Side - Bank Details */}
           <div>
             <p className="text-gray-800 font-bold">2 Bank Accounts</p>
@@ -50,9 +52,11 @@ const Dashboard = () => {
           </div>
 
           {/* Right Side - Add Bank Button */}
-          <button className="text-blue-500 font-semibold text-sm">
-            + Add bank
-          </button>
+          <div className="mt-4 md:mt-0 flex md:items-center">
+            <button className="text-blue-500 font-semibold text-sm">
+              + Add bank
+            </button>
+          </div>
         </div>
       </div>
 
