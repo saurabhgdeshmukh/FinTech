@@ -26,7 +26,10 @@ const Budget: React.FC = () => {
       {/* Profile Section */}
       <div
         className="flex flex-col border-b border-gray-200 relative bg-cover bg-center"
-        style={{ backgroundImage: `url('/icons/gradient-mesh.svg')`, height: "100px" }}
+        style={{
+          backgroundImage: `url('/icons/gradient-mesh.svg')`,
+          height: "100px",
+        }}
       >
         {/* Overlay to Improve Readability */}
         <div className="bg-black bg-opacity-10 rounded-t-lg"></div>
@@ -45,7 +48,9 @@ const Budget: React.FC = () => {
         <h2 className="text-lg font-semibold text-gray-900 mt-2 relative text-center md:text-left">
           Saurabh Deshmukh
         </h2>
-        <p className="text-gray-500 text-sm relative text-center md:text-left">Saurabh@Deshmukh.pro</p>
+        <p className="text-gray-500 text-sm relative text-center md:text-left">
+          Saurabh@Deshmukh.pro
+        </p>
 
         {/* My Banks Section */}
         <div className="mt-5">
@@ -58,9 +63,24 @@ const Budget: React.FC = () => {
           </div>
 
           {/* Render Cards */}
-          <div className="space-y-3">
-            {accounts.map((account) => (
-              <Card key={account.appwriteItemId} account={account} userName="Saurabh Deshmukh" showBalance />
+          {/* Render Cards with Overlapping Effect */}
+          <div className="relative w-full h-40 mt-4">
+            {accounts.map((account, index) => (
+              <div
+                key={account.appwriteItemId}
+                className="absolute w-full transition-transform duration-300"
+                style={{
+                  top: `${index * 30}px`,
+                  left: `${index * 15}px`, // Move second card slightly left
+                  zIndex: accounts.length - index,
+                }}
+              >
+                <Card
+                  account={account}
+                  userName="Saurabh Deshmukh"
+                  showBalance
+                />
+              </div>
             ))}
           </div>
         </div>
@@ -72,7 +92,9 @@ const Budget: React.FC = () => {
       <div className="mt-5 bg-white p-6">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-lg text-gray-600 font-bold">My Budgets</h2>
-          <button className="text-gray-500 hover:text-gray-700 text-lg">⋮</button>
+          <button className="text-gray-500 hover:text-gray-700 text-lg">
+            ⋮
+          </button>
         </div>
 
         <div className="space-y-4">
