@@ -99,42 +99,62 @@ const Budget: React.FC = () => {
 
         <div className="space-y-4">
           {/* Subscriptions */}
-          <div className="p-3 bg-blue-50 rounded-lg flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <img
-                src="/icons/monitor.svg"
-                alt="Subscriptions"
-                className="w-8 h-8 p-2 bg-blue-200 rounded-full"
-              />
-              <span className="text-gray-700 font-medium">Subscriptions</span>
+          <div className="p-3 bg-blue-50 rounded-lg">
+            <div className="flex justify-between items-center mb-2">
+              <div className="flex items-center space-x-2">
+                <img
+                  src="/icons/monitor.svg"
+                  alt="Subscriptions"
+                  className="w-8 h-8 p-2 bg-blue-200 rounded-full"
+                />
+                <span className="text-gray-700 font-medium">Subscriptions</span>
+              </div>
+              <span className="text-blue-600 font-medium">$25 left</span>
             </div>
-            <span className="text-blue-600 font-medium">$25 left</span>
+            {/* Progress Bar */}
+            <div className="w-full bg-blue-200 h-1 rounded-full">
+              <div className="bg-blue-600 h-1 rounded-full w-[40%]"></div>
+            </div>
           </div>
 
           {/* Food and Booze */}
-          <div className="p-3 bg-red-50 rounded-lg flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <img
-                src="/icons/shopping-bag.svg"
-                alt="Food and booze"
-                className="w-8 h-8 p-2 bg-red-200 rounded-full"
-              />
-              <span className="text-gray-700 font-medium">Food and booze</span>
+          <div className="p-3 bg-red-50 rounded-lg">
+            <div className="flex justify-between items-center mb-2">
+              <div className="flex items-center space-x-2">
+                <img
+                  src="/icons/shopping-bag.svg"
+                  alt="Food and booze"
+                  className="w-8 h-8 p-2 bg-red-200 rounded-full"
+                />
+                <span className="text-gray-700 font-medium">
+                  Food and booze
+                </span>
+              </div>
+              <span className="text-red-600 font-medium">$120 left</span>
             </div>
-            <span className="text-red-600 font-medium">$120 left</span>
+            {/* Progress Bar */}
+            <div className="w-full bg-red-200 h-1 rounded-full">
+              <div className="bg-red-600 h-1 rounded-full w-[75%]"></div>
+            </div>
           </div>
 
           {/* Savings */}
-          <div className="p-3 bg-green-50 rounded-lg flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <img
-                src="/icons/coins.svg"
-                alt="Savings"
-                className="w-8 h-8 p-2 bg-green-200 rounded-full"
-              />
-              <span className="text-gray-700 font-medium">Savings</span>
+          <div className="p-3 bg-green-50 rounded-lg">
+            <div className="flex justify-between items-center mb-2">
+              <div className="flex items-center space-x-2">
+                <img
+                  src="/icons/coins.svg"
+                  alt="Savings"
+                  className="w-8 h-8 p-2 bg-green-200 rounded-full"
+                />
+                <span className="text-gray-700 font-medium">Savings</span>
+              </div>
+              <span className="text-green-600 font-medium">$50 left</span>
             </div>
-            <span className="text-green-600 font-medium">$50 left</span>
+            {/* Progress Bar */}
+            <div className="w-full bg-green-200 h-1 rounded-full">
+              <div className="bg-green-600 h-1 rounded-full w-[60%]"></div>
+            </div>
           </div>
         </div>
       </div>
