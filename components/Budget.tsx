@@ -22,7 +22,7 @@ const Budget: React.FC = () => {
   ];
 
   return (
-    <div className="bg-white rounded-xl shadow-md w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto p-4">
+    <div className="bg-white rounded-xl shadow-md w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mx-auto ">
       {/* Profile Section */}
       <div
         className="flex flex-col border-b border-gray-200 relative bg-cover bg-center"

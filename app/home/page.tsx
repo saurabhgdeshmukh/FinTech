@@ -9,7 +9,7 @@ const HomePage: React.FC = () => {
       <Sidebar />
 
       {/* Main Content */}
-      <div className="flex flex-col flex-1 p-4 overflow-y-auto">
+      <div className="flex flex-col flex-1 overflow-y-auto">
         <div className="flex flex-col md:flex-row gap-6">
           {/* Dashboard - Takes full width */}
           <div className="flex-1">
