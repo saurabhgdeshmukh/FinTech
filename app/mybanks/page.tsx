@@ -9,6 +9,7 @@ const accounts = [
     currentBalance: 2840.4,
     mask: "1234",
     shareableId: "abc123",
+    spending: 1200,
   },
   {
     appwriteItemId: "2",
@@ -16,6 +17,7 @@ const accounts = [
     currentBalance: 2840.4,
     mask: "5678",
     shareableId: "def456",
+    spending: 800,
   },
   {
     appwriteItemId: "3",
@@ -23,6 +25,7 @@ const accounts = [
     currentBalance: 2840.4,
     mask: "9101",
     shareableId: "ghi789",
+    spending: 1500,
   },
   {
     appwriteItemId: "4",
@@ -30,6 +33,7 @@ const accounts = [
     currentBalance: 2840.4,
     mask: "1121",
     shareableId: "jkl012",
+    spending: 1000,
   },
   {
     appwriteItemId: "5",
@@ -37,6 +41,7 @@ const accounts = [
     currentBalance: 2840.4,
     mask: "3141",
     shareableId: "mno345",
+    spending: 600,
   },
   {
     appwriteItemId: "6",
@@ -44,6 +49,7 @@ const accounts = [
     currentBalance: 2840.4,
     mask: "5161",
     shareableId: "pqr678",
+    spending: 1700,
   },
 ];
 
@@ -61,7 +67,18 @@ const MyBanks: React.FC = () => {
         {/* Bank Cards Section */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {accounts.map((account) => (
-            <Card key={account.appwriteItemId} account={account} userName="Adrian Hajon" />
+            <div key={account.appwriteItemId} className="p-4">
+              <Card account={account} userName="Adrian Hajon" />
+              <div className="mt-4">
+                <p className="text-sm text-gray-600">Spending this month</p>
+                <div className="w-full bg-gray-200 rounded-full h-1.5 mt-1">
+                  <div
+                    className="bg-blue-500 h-1.5 rounded-full"
+                    style={{ width: `${(account.spending / account.currentBalance) * 100}%` }}
+                  ></div>
+                </div>
+              </div>
+            </div>
           ))}
         </div>
       </div>
