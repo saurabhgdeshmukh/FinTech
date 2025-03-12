@@ -11,13 +11,48 @@ const PaymentTransfer: React.FC = () => {
     amount: "",
   });
 
+  const [errors, setErrors] = useState({
+    sourceBank: "",
+    recipientEmail: "",
+    recipientAccount: "",
+    amount: "",
+  });
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const validateForm = () => {
+    let valid = true;
+    let newErrors: any = {};
+
+    if (!formData.sourceBank) {
+      newErrors.sourceBank = "Please select a source bank.";
+      valid = false;
+    }
+    if (!formData.recipientEmail || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.recipientEmail)) {
+      newErrors.recipientEmail = "Enter a valid email address.";
+      valid = false;
+    }
+    if (!formData.recipientAccount) {
+      newErrors.recipientAccount = "Recipient's account number is required.";
+      valid = false;
+    }
+    if (!formData.amount || parseFloat(formData.amount) <= 0) {
+      newErrors.amount = "Enter a valid amount.";
+      valid = false;
+    }
+
+    setErrors(newErrors);
+    return valid;
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Transfer Details: ", formData);
+    if (validateForm()) {
+      console.log("Transfer Details: ", formData);
+      alert("Transfer initiated successfully!");
+    }
   };
 
   return (
@@ -25,24 +60,22 @@ const PaymentTransfer: React.FC = () => {
       <Sidebar />
       <div className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md w-full mt-10">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Payment Transfer</h1>
-        <p className="text-gray-500 mb-6 text-sm">Please provide any specific details or notes related to the payment transfer</p>
+        <p className="text-gray-500 mb-6 text-sm">Provide the necessary details to process your transfer securely.</p>
         
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">Select Source Bank</label>
-            <div className="relative border rounded-lg p-2 bg-gray-50 flex items-center">
-              <span className="absolute left-3 text-gray-500">🏦</span>
-              <select
-                name="sourceBank"
-                value={formData.sourceBank}
-                onChange={handleChange}
-                className="w-full pl-8 pr-2 bg-transparent focus:outline-none"
-              >
-                <option value="">Select Account</option>
-                <option value="Bank A">Bank A</option>
-                <option value="Bank B">Bank B</option>
-              </select>
-            </div>
+            <select
+              name="sourceBank"
+              value={formData.sourceBank}
+              onChange={handleChange}
+              className={`w-full p-3 border rounded-lg bg-gray-50 focus:outline-none ${errors.sourceBank ? "border-red-500" : ""}`}
+            >
+              <option value="">Select Account</option>
+              <option value="Bank A">Bank A</option>
+              <option value="Bank B">Bank B</option>
+            </select>
+            {errors.sourceBank && <p className="text-red-500 text-sm">{errors.sourceBank}</p>}
           </div>
           
           <div className="mb-4">
@@ -52,7 +85,7 @@ const PaymentTransfer: React.FC = () => {
               value={formData.transferNote}
               onChange={handleChange}
               className="w-full p-3 border rounded-lg bg-gray-50 focus:outline-none"
-              placeholder="Dear John,\nI hope this message finds you well. I am transferring $100 to your account for fun. Please confirm once you receive it."
+              placeholder="Optional message to the recipient."
             />
           </div>
           
@@ -63,9 +96,10 @@ const PaymentTransfer: React.FC = () => {
               name="recipientEmail"
               value={formData.recipientEmail}
               onChange={handleChange}
-              className="w-full p-3 border rounded-lg bg-gray-50 focus:outline-none"
+              className={`w-full p-3 border rounded-lg bg-gray-50 focus:outline-none ${errors.recipientEmail ? "border-red-500" : ""}`}
               placeholder="john@gmail.com"
             />
+            {errors.recipientEmail && <p className="text-red-500 text-sm">{errors.recipientEmail}</p>}
           </div>
 
           <div className="mb-4">
@@ -75,9 +109,10 @@ const PaymentTransfer: React.FC = () => {
               name="recipientAccount"
               value={formData.recipientAccount}
               onChange={handleChange}
-              className="w-full p-3 border rounded-lg bg-gray-50 focus:outline-none"
-              placeholder="Enter the account number"
+              className={`w-full p-3 border rounded-lg bg-gray-50 focus:outline-none ${errors.recipientAccount ? "border-red-500" : ""}`}
+              placeholder="Enter account number"
             />
+            {errors.recipientAccount && <p className="text-red-500 text-sm">{errors.recipientAccount}</p>}
           </div>
 
           <div className="mb-6">
@@ -87,9 +122,10 @@ const PaymentTransfer: React.FC = () => {
               name="amount"
               value={formData.amount}
               onChange={handleChange}
-              className="w-full p-3 border rounded-lg bg-gray-50 focus:outline-none"
+              className={`w-full p-3 border rounded-lg bg-gray-50 focus:outline-none ${errors.amount ? "border-red-500" : ""}`}
               placeholder="40000"
             />
+            {errors.amount && <p className="text-red-500 text-sm">{errors.amount}</p>}
           </div>
 
           <button
