@@ -61,10 +61,14 @@ const PaymentTransfer: React.FC = () => {
       <div className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md w-full mt-10">
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Payment Transfer</h1>
         <p className="text-gray-500 mb-6 text-sm">Provide the necessary details to process your transfer securely.</p>
-        
+        <h3 className="text-xl font-bold text-gray-800 mb-2">Transfer Details</h3>
+        <p className="text-gray-500 mb-6 text-sm">Enter the details of the recipent</p>
         <form onSubmit={handleSubmit}>
-          <div className="mb-4">
-            <label className="block text-gray-700 font-medium mb-2">Select Source Bank</label>
+          <div className="mb-4 flex">
+            <div>
+          <h3 className="text-l  text-gray-800 mb-2">Select Source Bank</h3>
+          <p className="text-gray-500 mb-6 text-sm">Select the bank Account you want to transfer funds from</p>
+          </div>
             <select
               name="sourceBank"
               value={formData.sourceBank}
